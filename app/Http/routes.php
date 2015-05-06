@@ -1,17 +1,43 @@
 <?php
-
 /*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
+Route::match(['get','post'],'exemplo2', function(){
+    return "oi";
+});
+
+Route::any('exemplo2', function(){
+
+});
+
+Route::get('produtos-legais',['as'=>'produtos', function(){
+    echo Route::currentRouteName();
+    //return "Produtos";
+}]);
 */
 
+Route::group(['prefix'=>'admin'], function(){
+    Route::get('categories', 'AdminCategoriesController@index');
+    Route::get('products', 'AdminProductsController@index');
+});
+
+
+
+Route::get('category/{category}', function(\CodeCommerce\Category $category){
+    return $category->name;
+});
+
+Route::pattern('id','[0-9]+');
+
+Route::get('user/{id?}', function($id = 123){
+
+    if($id)
+        return "Olá $id";
+
+    return "não possui id";
+});
+
 Route::get('/', 'WelcomeController@index');
+
+Route::put('exemplo', 'WelcomeController@exemplo');
 
 Route::get('home', 'HomeController@index');
 
