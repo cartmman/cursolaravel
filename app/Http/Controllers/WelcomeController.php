@@ -4,12 +4,10 @@ use CodeCommerce\Category;
 
 class WelcomeController extends Controller {
 
-	private $categories;
 
-	public function __construct(Category $category)
+    public function __construct()
 	{
 		$this->middleware('guest');
-        $this->categories = $category;
 	}
 
 	/**
@@ -21,11 +19,4 @@ class WelcomeController extends Controller {
 	{
 		return view('welcome');
 	}
-
-    public function exemplo()
-    {
-        $categories = $this->categories->all();
-
-        return view('exemplo',compact('categories'));
-    }
 }

@@ -2,9 +2,6 @@
 
 use CodeCommerce\Category;
 use CodeCommerce\Http\Requests;
-use CodeCommerce\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
 
 class CategoriesController extends Controller {
 
@@ -16,7 +13,7 @@ class CategoriesController extends Controller {
     }
 
 	public function index(){
-        $categories = $this->categoryModel->all();
+        $categories = $this->categoryModel->paginate(10);
         return view('categories.index',compact('categories'));
     }
 
