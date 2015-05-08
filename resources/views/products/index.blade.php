@@ -15,6 +15,8 @@
                 <th>Description</th>
                 <th>Price</th>
                 <th>Category</th>
+                <th>Featured</th>
+                <th>Recommend</th>
                 <th>Action</th>
             </tr>
             @foreach($products as $product)
@@ -24,6 +26,19 @@
                 <td>{{ $product->description }}</td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->category->name}}</td>
+
+                @if($product->featured==0)
+                <td>{{ "No" }}</td>
+                @else
+                <td>{{ "Yes" }}</td>
+                @endif
+
+                @if($product->recommend==0)
+                    <td>{{ "No" }}</td>
+                @else
+                    <td>{{ "Yes" }}</td>
+                @endif
+
                 <td>
                     <a href="{{ route('products.edit',['id'=>$product->id]) }}">Edit</a> |
                     <a href="{{ route('products.destroy',['id'=>$product->id]) }}">Delete</a>
