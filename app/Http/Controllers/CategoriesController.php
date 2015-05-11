@@ -12,7 +12,7 @@ class CategoriesController extends Controller {
         $this->categoryModel = $categoryModel;
     }
 
-	public function index(){
+    public function index(){
         $categories = $this->categoryModel->paginate(10);
         return view('categories.index',compact('categories'));
     }
