@@ -26,6 +26,7 @@
 
         <div class="form-group">
             {!! Form::submit('Save Category',['class'=>'btn btn-primary']) !!}
+            {!! link_to(route('categories'), 'Back to categories', ['class' => 'btn btn-default']) !!}
         </div>
 
         {!! Form::close() !!}

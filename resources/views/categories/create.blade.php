@@ -26,6 +26,7 @@
 
         <div class="form-group">
             {!! Form::submit('Add Category',['class'=>'btn btn-primary']) !!}
+            {!! link_to(route('categories'), 'Cancel', ['class' => 'btn btn-default']) !!}
         </div>
 
         {!! Form::close() !!}

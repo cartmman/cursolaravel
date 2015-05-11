@@ -46,6 +46,7 @@
 
         <div class="form-group">
             {!! Form::submit('Save Product',['class'=>'btn btn-primary']) !!}
+            {!! link_to(route('products'), 'Back to products', ['class' => 'btn btn-default']) !!}
         </div>
 
         {!! Form::close() !!}

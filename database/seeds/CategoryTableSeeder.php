@@ -14,7 +14,7 @@ class CategoryTableSeeder extends Seeder {
 
         foreach(range(1,15) as $i) {
             Category::create([
-                'name' => $faker->word(),
+                'name'        => $faker->word(),
                 'description' => $faker->sentence()
             ]);
         }
