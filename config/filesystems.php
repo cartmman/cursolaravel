@@ -48,6 +48,12 @@ return [
 			'root'   => storage_path().'/app',
 		],
 
+        'public_local' => [
+            'driver' => 'local',
+            'root'   => public_path().'/uploads',
+        ],
+
+        /* a Amazon esta pedindo cartão de crédito até para as contas gratuitas, por esse motivo não fiz upload por lá */
 		's3' => [
 			'driver' => 's3',
 			'key'    => 'your-key',

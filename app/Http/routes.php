@@ -23,9 +23,17 @@ Route::group(['prefix'=>'admin','where'=>['id'=>'[0-9]+']], function(){
         Route::get('{id}/edit',['as'=>'products.edit','uses'=>'ProductsController@edit']);
         Route::put('{id}/update',['as'=>'products.update','uses'=>'ProductsController@update']);
 
+        // Rota: site/admin/products/images
+        Route::group(['prefix'=>'images'], function(){
+            Route::get('{id}/product',['as'=>'products.images','uses'=>'ProductsController@images']);
+            Route::get('create/{id}/product',['as'=>'products.images.create','uses'=>'ProductsController@createImage']);
+            Route::post('store/{id}/product',['as'=>'products.images.store','uses'=>'ProductsController@storeImage']);
+            Route::get('destroy/{id}/image',['as'=>'products.images.destroy','uses'=>'ProductsController@destroyImage']);
+        });
     });
-
 });
+
+
 
 Route::get('/', 'WelcomeController@index');
 
