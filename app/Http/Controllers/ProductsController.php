@@ -31,6 +31,10 @@ class ProductsController extends Controller {
 
     public function store(ProductRequest $request){
         $this->productModel->create($request->all());
+
+        $tags = $request->get('tags');
+        $this->productModel->tags()->sync([$tags]);
+
         return redirect()->route('products');
     }
 
