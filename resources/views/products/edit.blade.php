@@ -45,6 +45,12 @@
         </div>
 
         <div class="form-group">
+            {!! Form::label('tags','Tags:') !!}
+            {!! Form::textarea('tags',$product->tags,['class'=>'form-control']) !!}
+            <!-- Não consegui listar somente os id's da tag -->
+        </div>
+
+        <div class="form-group">
             {!! Form::submit('Save Product',['class'=>'btn btn-primary']) !!}
             {!! link_to(route('products'), 'Back to products', ['class' => 'btn btn-default']) !!}
         </div>

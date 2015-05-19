@@ -30,25 +30,29 @@ class ProductsController extends Controller {
     }
 
     public function store(ProductRequest $request){
-        $this->productModel->create($request->all());
+        $product = $this->productModel->create($request->all());
 
-        $tags = $request->get('tags');
-        $this->productModel->tags()->sync([$tags]);
+        $tags = explode(',',$request->get('tags'));
+
+        $product->tags()->sync($tags);
 
         return redirect()->route('products');
     }
 
     public function edit($id, Category $category){
         $categories = $category->lists('name','id');
-        $product = $this->productModel->find($id);
-        return view('products.edit',compact('product','categories'));
+        $product    = $this->productModel->find($id);
+        return view('products.edit',compact('product','categories','tags'));
     }
 
     public function update(ProductRequest $request,$id){
         $request->get('featured')  ? null : $request['featured'] = 0;
         $request->get('recommend') ? null : $request['recommend'] = 0;
+        $tags = explode(',',$request->get('tags'));
 
         $this->productModel->find($id)->update($request->all());
+        $this->productModel->find($id)->tags()->sync($tags);
+
         return redirect()->route('products');
     }
 
