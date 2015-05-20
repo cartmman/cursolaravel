@@ -8,15 +8,18 @@ use CodeCommerce\Http\Requests\ProductImageRequest;
 use CodeCommerce\Http\Requests\ProductRequest;
 use CodeCommerce\Product;
 use CodeCommerce\ProductImage;
+use CodeCommerce\Tag;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller {
 
     private $productModel;
+    private $tagModel;
 
-    public function __construct(Product $product){
+    public function __construct(Product $product, Tag $tag){
         $this->productModel = $product;
+        $this->tagModel     = $tag;
     }
 
     public function index(){
@@ -34,8 +37,16 @@ class ProductsController extends Controller {
 
         $tags = explode(',',$request->get('tags'));
 
-        $product->tags()->sync($tags);
+        foreach($tags as $tag){
+            $tagid = \CodeCommerce\Tag::where('name','=',$tag)->get(['id']);
 
+            if(empty($tagid)){
+                $id = $this->tagModel->create(['name'=>$tag]);
+                $product->tags()->attach($id->id);
+            } else {
+                $product->tags()->sync($tagid);
+            }
+        }
         return redirect()->route('products');
     }
 
