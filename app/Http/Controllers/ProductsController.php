@@ -40,7 +40,7 @@ class ProductsController extends Controller {
         foreach($tags as $tag){
             $tagid = \CodeCommerce\Tag::where('name','=',$tag)->get(['id']);
 
-            if(empty($tagid)){
+            if($tagid->isEmpty()){
                 $id = $this->tagModel->create(['name'=>$tag]);
                 $product->tags()->attach($id->id);
             } else {
