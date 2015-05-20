@@ -33,4 +33,10 @@ class Product extends Model {
 
         return implode($tags,',');
     }
+
+    // scopeNomedoMetodo
+    // invocado no controller Model::featured()->get();
+    public function scopeFeatured($query){
+        return $query->where('featured','=',1);
+    }
 }

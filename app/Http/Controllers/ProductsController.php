@@ -53,16 +53,39 @@ class ProductsController extends Controller {
     public function edit($id, Category $category){
         $categories = $category->lists('name','id');
         $product    = $this->productModel->find($id);
+
+        if($product->tags->isEmpty()){
+            $tags = '';
+        } else {
+            foreach($product->tags as $tag){
+                $tagName[] = $tag->name;
+            }
+            $tags = implode(",",$tagName);
+        }
+
         return view('products.edit',compact('product','categories','tags'));
     }
 
     public function update(ProductRequest $request,$id){
         $request->get('featured')  ? null : $request['featured'] = 0;
         $request->get('recommend') ? null : $request['recommend'] = 0;
-        $tags = explode(',',$request->get('tags'));
 
         $this->productModel->find($id)->update($request->all());
-        $this->productModel->find($id)->tags()->sync($tags);
+
+        $product = $this->productModel->find($id);
+
+        $tags = explode(',',$request->get('tags'));
+
+        foreach($tags as $tag){
+            $tagid = \CodeCommerce\Tag::where('name','=',$tag)->get(['id']);
+
+            if($tagid->isEmpty()){
+                $id = $this->tagModel->create(['name'=>$tag]);
+                $product->tags()->attach($id->id);
+            } else {
+                $product->tags()->sync($tagid);
+            }
+        }
 
         return redirect()->route('products');
     }

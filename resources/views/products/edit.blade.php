@@ -46,8 +46,8 @@
 
         <div class="form-group">
             {!! Form::label('tags','Tags:') !!}
-            {!! Form::textarea('tags',$product->tags,['class'=>'form-control']) !!}
-            <!-- Não consegui listar somente os id's da tag -->
+            {!! Form::textarea('tags',$tags,['class'=>'form-control']) !!}
+
         </div>
 
         <div class="form-group">
