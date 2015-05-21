@@ -106,16 +106,11 @@
 </div><!--/header-bottom-->
 </header><!--/header-->
 
-
-
 <section>
     <div class="container">
         <div class="row">
-
             @yield('categories')
-
             @yield('content')
-
         </div>
     </div>
     <div class="common-modal modal fade" id="common-Modal1" tabindex="-1" role="dialog" aria-hidden="true">
@@ -143,8 +138,6 @@
     </div>
 
 </footer><!--/Footer-->
-
-
 
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>

@@ -15,11 +15,9 @@ use Illuminate\Support\Facades\Storage;
 class ProductsController extends Controller {
 
     private $productModel;
-    private $tagModel;
 
-    public function __construct(Product $product, Tag $tag){
+    public function __construct(Product $product){
         $this->productModel = $product;
-        $this->tagModel     = $tag;
     }
 
     public function index(){
@@ -34,19 +32,8 @@ class ProductsController extends Controller {
 
     public function store(ProductRequest $request){
         $product = $this->productModel->create($request->all());
+        $this->productModel->createOrUpdateTag($request, $product);
 
-        $tags = explode(',',$request->get('tags'));
-
-        foreach($tags as $tag){
-            $tagid = \CodeCommerce\Tag::where('name','=',$tag)->get(['id']);
-
-            if($tagid->isEmpty()){
-                $id = $this->tagModel->create(['name'=>$tag]);
-                $product->tags()->attach($id->id);
-            } else {
-                $product->tags()->sync($tagid);
-            }
-        }
         return redirect()->route('products');
     }
 
@@ -71,21 +58,9 @@ class ProductsController extends Controller {
         $request->get('recommend') ? null : $request['recommend'] = 0;
 
         $this->productModel->find($id)->update($request->all());
-
         $product = $this->productModel->find($id);
 
-        $tags = explode(',',$request->get('tags'));
-
-        foreach($tags as $tag){
-            $tagid = \CodeCommerce\Tag::where('name','=',$tag)->get(['id']);
-
-            if($tagid->isEmpty()){
-                $id = $this->tagModel->create(['name'=>$tag]);
-                $product->tags()->attach($id->id);
-            } else {
-                $product->tags()->sync($tagid);
-            }
-        }
+        $this->productModel->createOrUpdateTag($request, $product);
 
         return redirect()->route('products');
     }
