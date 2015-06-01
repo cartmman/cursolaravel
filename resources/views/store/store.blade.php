@@ -79,15 +79,15 @@
                         <li><a href="/" class="active">Home</a></li>
                         <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="shop.html">Products</a></li>
-                                <li><a href="product-details.html">Product Details</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="cart.html">Cart</a></li>
-                                <li><a href="login.html">Login</a></li>
+                                <li><a href="#">Products</a></li>
+                                <li><a href="#">Product Details</a></li>
+                                <li><a href="#">Checkout</a></li>
+                                <li><a href="#">Cart</a></li>
+                                <li><a href="#">Login</a></li>
                             </ul>
                         </li>
 
-                        <li><a href="contact-us.html">Contact</a></li>
+                        <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -134,7 +134,7 @@
 
 </footer><!--/Footer-->
 
-<script src="{{ elixir('js/all.js') }}"></script>
+<script src="/js/all.js"></script>
 
 </body>
 </html>

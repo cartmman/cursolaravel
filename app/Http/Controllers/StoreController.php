@@ -2,10 +2,8 @@
 
 use CodeCommerce\Category;
 use CodeCommerce\Http\Requests;
-use CodeCommerce\Http\Controllers\Controller;
-
 use CodeCommerce\Product;
-use Illuminate\Http\Request;
+
 
 class StoreController extends Controller {
 
@@ -27,9 +25,19 @@ class StoreController extends Controller {
 
     public function category($id){
         $categories = $this->modelCategory->all();
-        $products   = $this->modelCategory->find($id)->products()->get();
+        $category = $this->modelCategory->find($id);
 
-        return view('store.categories', compact('categories','products'));
+        //$products   = $this->modelCategory->find($id)->products()->get();
+        $products = $this->modelProduct->OfCategory($id)->get();
+
+        return view('store.category', compact('categories', 'category', 'products'));
+    }
+
+    public function product($id){
+        $categories = $this->modelCategory->all();
+        $product    = $this->modelProduct->find($id);
+
+        return view('store.product', compact('categories', 'product'));
     }
 
 }

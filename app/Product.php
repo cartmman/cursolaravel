@@ -46,6 +46,11 @@ class Product extends Model {
         return $query->where('recommend','=',1);
     }
 
+    // outro tipo de scope, só que global
+    public function scopeOfCategory($query, $type) {
+        return $query->where('category_id', '=', $type);
+    }
+
     public function createOrUpdateTag(ProductRequest $request, Product $product){
         $tags = explode(',',$request->get('tags'));
 
