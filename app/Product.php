@@ -46,7 +46,7 @@ class Product extends Model {
         return $query->where('recommend','=',1);
     }
 
-    // outro tipo de scope, só que global
+    // outro tipo de scope, só que passando parametro
     public function scopeOfCategory($query, $type) {
         return $query->where('category_id', '=', $type);
     }
@@ -65,4 +65,5 @@ class Product extends Model {
             }
         }
     }
+
 }

@@ -39,7 +39,15 @@
                                 <i class="fa fa-shopping-cart"></i>
                                 Adicionar no Carrinho </a>
                         </span>
+
+                    <p>Tags</p>
+                    <p>
+                    @foreach($product->tags as $tag)
+                        <a class="btn-sm btn-info" href="{{ route('store.tags', ['id'=>$tag->id]) }}">{{ $tag->name }}</a>
+                    @endforeach
+                    </p>
                 </div>
+
                 <!--/product-information-->
             </div>
         </div>

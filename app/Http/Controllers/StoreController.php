@@ -3,16 +3,19 @@
 use CodeCommerce\Category;
 use CodeCommerce\Http\Requests;
 use CodeCommerce\Product;
+use CodeCommerce\Tag;
 
 
 class StoreController extends Controller {
 
     private $modelProduct;
     private $modelCategory;
+    private $modelTag;
 
-    public function __construct(Product $product, Category $category){
+    public function __construct(Product $product, Category $category, Tag $tag){
         $this->modelProduct  = $product;
         $this->modelCategory = $category;
+        $this->modelTag      = $tag;
     }
 
     public function index(){
@@ -39,5 +42,14 @@ class StoreController extends Controller {
 
         return view('store.product', compact('categories', 'product'));
     }
+
+    public function productsTag($id){
+        $tag      = $this->modelTag->find($id);
+        $products = $tag->products;
+
+        return view('store.products_tag', compact('products','tag'));
+    }
+
+   
 
 }
