@@ -22,7 +22,7 @@ class Cart {
         ];
         return $this->items;
     }
-    
+
     public function remove($id){
         unset($this->items[$id]);
      }

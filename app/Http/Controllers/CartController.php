@@ -34,19 +34,15 @@ class CartController extends Controller {
     }
 
     public function destroy($id){
-     $cart = $this->getCart();
-     $cart->remove($id);
+        $cart = $this->getCart();
+        $cart->remove($id);
 
-     Session::set('cart', $cart);
+        Session::set('cart', $cart);
 
-     return redirect()->route('cart');
+        return redirect()->route('cart');
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCart()
-    {
+    public function getCart() {
         if (Session::has('cart')) {
             $cart = Session::get('cart');
         } else {

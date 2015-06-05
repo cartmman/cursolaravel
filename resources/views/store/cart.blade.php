@@ -4,7 +4,7 @@
     <section id="cart_items">
         <div class="container">
             <div class="table-responsive cart_info">
-                <table class="table table-condensed">
+                <table class="table table-condensed" id="table">
                     <thead>
                     <tr class="cart_menu">
                         <td class="image">Item</td>
@@ -17,22 +17,22 @@
 
                     <tbody>
                     @forelse($cart->all() as $k=>$item)
-                        <tr>
+                        <tr class="product">
                             <td class="cart_product">
                                 <a href="{{ route('store.product', ['id'=>$k]) }}">Imagem</a>
                             </td>
 
                             <td class="cart_description">
                                 <h4><a href="{{ route('store.product', ['id'=>$k]) }}">{{ $item['name'] }}</a> </h4>
-                                <p>Código: {{ $k }}</p>
+                                <p id="cod">Código: {{ $k }}</p>
                             </td>
 
-                            <td class="cart_price">
+                            <td class="cart_price" data-price="{{ $item['price'] }}">
                                R$ {{ $item['price'] }}
                             </td>
 
                             <td class="cart_quantity">
-                                {{ $item['qtd'] }}
+                                <input type="text" id="qtd" value="{{ $item['qtd'] }}" size="5" onkeyup="getPrice()" />
                             </td>
 
                             <td></td>
@@ -57,7 +57,7 @@
                     <tr class="cart_menu">
                         <td colspan="7">
                             <div class="pull-right">
-                                <span style="margin-right:135px">
+                                <span id="total" style="margin-right:135px">
                                     TOTAL: R$ {{ $cart->getTotal() }}
                                 </span>
                                 <a href="#" class="btn btn-success">Fechar pedido</a>
@@ -70,4 +70,30 @@
             </div>
         </div>
     </section>
+@stop
+
+@section('personal-js')
+    <script type="text/javascript">
+
+        function getPrice(){
+            updateTotal();
+        }
+
+        var updateTotal = function() {
+            var sum = 0;
+
+            $('.product').each(function() {
+                var price    = $('.cart_price', this).data('price');
+                var qtd      = $('#qtd', this).val();
+                var subtotal = price*qtd;
+
+                subtotal = subtotal.toFixed(2);
+                sum     += Number(subtotal);
+
+                $('.cart_total_price', this).html(subtotal);
+                $('#total').html(sum.toFixed(2));
+            });
+        };
+
+    </script>
 @stop

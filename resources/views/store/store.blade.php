@@ -135,6 +135,6 @@
 </footer><!--/Footer-->
 
 <script src="/js/all.js"></script>
-
+@yield('personal-js')
 </body>
 </html>
