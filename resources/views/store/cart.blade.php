@@ -18,13 +18,16 @@
                     <tbody>
                     @forelse($cart->all() as $k=>$item)
                         <tr class="product">
+
+                            <input id="id" type="hidden" value="{{ $k }}"/>
+
                             <td class="cart_product">
                                 <a href="{{ route('store.product', ['id'=>$k]) }}">Imagem</a>
                             </td>
 
                             <td class="cart_description">
                                 <h4><a href="{{ route('store.product', ['id'=>$k]) }}">{{ $item['name'] }}</a> </h4>
-                                <p id="cod">Código: {{ $k }}</p>
+                                <p>Código: {{ $k }}</p>
                             </td>
 
                             <td class="cart_price" data-price="{{ $item['price'] }}">
@@ -83,6 +86,7 @@
             var sum = 0;
 
             $('.product').each(function() {
+                var id       = $('#id', this).val();
                 var price    = $('.cart_price', this).data('price');
                 var qtd      = $('#qtd', this).val();
                 var subtotal = price*qtd;
@@ -92,6 +96,8 @@
 
                 $('.cart_total_price', this).html(subtotal);
                 $('#total').html(sum.toFixed(2));
+
+                $.get( "/cart/update/"+id+"/"+qtd);
             });
         };
 

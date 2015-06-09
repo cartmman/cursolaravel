@@ -42,6 +42,13 @@ class CartController extends Controller {
         return redirect()->route('cart');
     }
 
+    public function update($id, $qtd){
+        $cart = $this->getCart();
+        $cart->update($id,$qtd);
+
+        Session::set('cart', $cart);
+    }
+
     public function getCart() {
         if (Session::has('cart')) {
             $cart = Session::get('cart');
