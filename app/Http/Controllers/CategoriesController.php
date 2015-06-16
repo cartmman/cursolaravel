@@ -2,7 +2,6 @@
 
 use CodeCommerce\Category;
 use CodeCommerce\Http\Requests;
-use Illuminate\Support\Facades\Auth;
 
 class CategoriesController extends Controller {
 

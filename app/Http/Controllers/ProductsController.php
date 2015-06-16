@@ -8,7 +8,6 @@ use CodeCommerce\Http\Requests\ProductImageRequest;
 use CodeCommerce\Http\Requests\ProductRequest;
 use CodeCommerce\Product;
 use CodeCommerce\ProductImage;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
