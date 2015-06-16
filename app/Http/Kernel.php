@@ -24,9 +24,10 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'auth' => 'CodeCommerce\Http\Middleware\Authenticate',
+		'auth'       => 'CodeCommerce\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'CodeCommerce\Http\Middleware\RedirectIfAuthenticated',
+		'guest'      => 'CodeCommerce\Http\Middleware\RedirectIfAuthenticated',
+		'admin'      => 'CodeCommerce\Http\Middleware\UserIsAdmin',
 	];
 
 }

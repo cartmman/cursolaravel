@@ -53,8 +53,8 @@
                     <ul class="nav navbar-nav">
                         <li><a href="#"><i class="fa fa-user"></i> Minha conta</a></li>
                         <li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
-                        <li><a href="#"><i class="fa fa-lock"></i> Login</a></li>
+                        <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
+                        <li><a href="auth/login"><i class="fa fa-lock"></i> Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -82,8 +82,8 @@
                                 <li><a href="#">Products</a></li>
                                 <li><a href="#">Product Details</a></li>
                                 <li><a href="#">Checkout</a></li>
-                                <li><a href="#">Cart</a></li>
-                                <li><a href="#">Login</a></li>
+                                <li><a href="{{ route('cart') }}">Cart</a></li>
+                                <li><a href="auth/login">Login</a></li>
                             </ul>
                         </li>
 

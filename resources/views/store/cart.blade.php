@@ -63,7 +63,7 @@
                                 <span id="total" style="margin-right:135px">
                                     TOTAL: R$ {{ $cart->getTotal() }}
                                 </span>
-                                <a href="#" class="btn btn-success">Fechar pedido</a>
+                                <a href="{{ route('checkout.place') }}" class="btn btn-success">Fechar pedido</a>
                             </div>
                         </td>
                     </tr>
