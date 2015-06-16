@@ -1,26 +1,13 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use CodeCommerce\Product;
-use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
 
 class ProductTableSeeder extends Seeder {
 
     public function run(){
         DB::table('products')->truncate();
 
-        $faker = Faker::create();
-
-        foreach(range(1,40) as $i) {
-            Product::create([
-                'category_id' => $faker->numberBetween(1,15),
-                'name'        => $faker->word(),
-                'description' => $faker->sentence(),
-                'price'       => $faker->randomNumber(),
-                'featured'    => $faker->boolean(),
-                'recommend'   => $faker->boolean()
-            ]);
-        }
+        factory('CodeCommerce\Product', 40)->create();
     }
 }
