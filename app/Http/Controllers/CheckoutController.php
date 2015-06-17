@@ -31,8 +31,6 @@ class CheckoutController extends Controller
             foreach ($cart->all() as $k=>$item) {
                 $order->items()->create(['product_id'=>$k, 'price'=>$item['price'], 'qtd'=>$item['qtd']]);
             }
-
-            dd($order);
         }
     }
 }
