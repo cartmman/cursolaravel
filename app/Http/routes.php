@@ -34,8 +34,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin'], 'where' => 
     });
 });
 
-
-
 Route::get('/', 'StoreController@index');
 
 Route::get('category/{id}',          ['as'=>'store.category', 'uses'=>'StoreController@category']);
@@ -55,11 +53,6 @@ Route::group(['middleware'=>'auth'], function(){
 });
 
 
-Route::get('evento', function() {
-
-    event(new \CodeCommerce\Events\CheckoutEvent());
-
-});
 
 Route::get('home', 'HomeController@index');
 
