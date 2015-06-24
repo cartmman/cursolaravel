@@ -32,6 +32,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin'], 'where' => 
             Route::get('destroy/{id}/image',  ['as' => 'products.images.destroy', 'uses' => 'ProductsController@destroyImage']);
         });
     });
+
+    Route::group(['prefix' => 'orders'], function () {
+        Route::get('',            ['as' => 'orders',        'uses' => 'OrdersController@index']);
+        Route::get('{id}/edit',   ['as' => 'orders.edit',   'uses' => 'OrdersController@edit']);
+        Route::put('{id}/update', ['as' => 'orders.update', 'uses' => 'OrdersController@update']);
+    });
 });
 
 Route::get('/', 'StoreController@index');
