@@ -49,6 +49,48 @@
 							</div>
 						</div>
 
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Endereço</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="endereco">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Numero</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="numero">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Bairro</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="bairro">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Cidade</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="cidade">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Estado</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="estado">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">CEP</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="cep">
+                            </div>
+                        </div>
+
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">

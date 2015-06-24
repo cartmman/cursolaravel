@@ -2,11 +2,9 @@
 
 namespace CodeCommerce\Http\Controllers;
 
+use CodeCommerce\Http\Requests;
 use CodeCommerce\Order;
 use Illuminate\Http\Request;
-
-use CodeCommerce\Http\Requests;
-use CodeCommerce\Http\Controllers\Controller;
 
 class OrdersController extends Controller
 {
