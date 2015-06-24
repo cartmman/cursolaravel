@@ -15,6 +15,15 @@
         {!! Form::open(['route'=>['orders.update', $order->id],'method'=>'put']) !!}
 
         <div class="form-group">
+            <h4>Cliente : {{ $order->user->name }}</h4>
+            <h4>Endereço: {{ $order->user->endereco .', '. $order->user->numero}}</h4>
+            <h4>Bairro  : {{ $order->user->bairro }}</h4>
+            <h4>Cidade  : {{ $order->user->cidade }}</h4>
+            <h4>Estado  : {{ $order->user->estado }}</h4>
+            <h4>CEP     : {{ $order->user->cep }}</h4>
+        </div>
+
+        <div class="form-group">
             {!! Form::label('products', 'Products:') !!}
             <ul>
                 @foreach($order->items as $item)

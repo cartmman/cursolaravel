@@ -30,7 +30,7 @@ class CheckoutController extends Controller
             $order = $orderModel->create(['user_id'=>Auth::user()->id, 'total'=>$cart->getTotal()]);
 
             foreach ($cart->all() as $k=>$item) {
-                $checkout->addItem(new Item($k, $item['name'], number_format($item['price'], 2, ".", ","), $item['qtd']));
+                $checkout->addItem(new Item($k, $item['name'], number_format($item['price'], 2, ".", ""), $item['qtd']));
                 $order->items()->create(['product_id'=>$k, 'price'=>$item['price'], 'qtd'=>$item['qtd']]);
             }
             $cart->clear();
@@ -39,7 +39,6 @@ class CheckoutController extends Controller
             $response = $checkoutService->checkout($checkout->getCheckout());
 
             return redirect($response->getRedirectionUrl());
-            // return view('store.checkout', compact('order','cart'));
         }
 
         $categories = Category::all();

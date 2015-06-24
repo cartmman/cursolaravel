@@ -55,9 +55,9 @@
                         <li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                         <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
                         @if(Auth::guest())
-                            <li><a href="auth/login">Login</a></li>
+                            <li><a href="/auth/login">Login</a></li>
                         @else
-                            <li><a href="auth/logout">Sair ({{ Auth::user()->name }})</a></li>
+                            <li><a href="/auth/logout">Sair ({{ Auth::user()->name }})</a></li>
                         @endif
                     </ul>
                 </div>
@@ -88,9 +88,9 @@
                                 <li><a href="#">Checkout</a></li>
                                 <li><a href="{{ route('cart') }}">Cart</a></li>
                                 @if(Auth::guest())
-                                    <li><a href="auth/login">Login</a></li>
+                                    <li><a href="/auth/login">Login</a></li>
                                 @else
-                                    <li><a href="auth/logout">Sair ({{ Auth::user()->name }})</a></li>
+                                    <li><a href="/auth/logout">Sair ({{ Auth::user()->name }})</a></li>
                                 @endif
                             </ul>
                         </li>
